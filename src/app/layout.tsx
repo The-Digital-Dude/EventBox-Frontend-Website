@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
+import LayoutWrapper from "./_components/LayoutWrapper";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
-  title: "Events Box - Find Australia's Best Events Here!",
-  description: "Find or create events and buy tickets across Australia.",
+  title: "EventsBox | Find Australia's Best Events Here!",
+  description: "Discover and book the best events in Australia. From music festivals to business workshops, EventsBox is your multi-vendor event ticketing partner.",
 };
 
 export default function RootLayout({
@@ -19,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} antialiased`}>{children}</body>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${outfit.className} ${outfit.variable} bg-slate-50 text-secondary antialiased`}>
+        <LayoutWrapper>{children}</LayoutWrapper>
+      </body>
     </html>
   );
 }

@@ -78,6 +78,11 @@ const InteractivePastEventsExplorer: React.FC<InteractivePastEventsExplorerProps
     selectedYear !== 'all' ? `Year: ${selectedYear}` : null,
   ].filter(Boolean) as string[];
 
+  const animationKey = useMemo(
+    () => `${searchQuery}|${selectedCategory}|${selectedCity}|${selectedYear}|${sortBy}`,
+    [searchQuery, selectedCategory, selectedCity, selectedYear, sortBy]
+  );
+
   const clearFilters = () => {
     setSearchQuery('');
     setSelectedCategory('');
@@ -160,7 +165,7 @@ const InteractivePastEventsExplorer: React.FC<InteractivePastEventsExplorerProps
             {activeFilters.map((filter) => (
               <span
                 key={filter}
-                className="inline-flex items-center rounded-full bg-primary/10 text-primary px-3 py-1 text-xs font-bold"
+                className="inline-flex items-center rounded-full bg-primary/10 text-primary px-3 py-1 text-xs font-bold animate-chip-pop"
               >
                 {filter}
               </span>
@@ -197,19 +202,25 @@ const InteractivePastEventsExplorer: React.FC<InteractivePastEventsExplorerProps
         </div>
       </div>
 
-      <div className="mb-6 text-sm text-gray-500">
+      <div key={`summary-${animationKey}`} className="mb-6 text-sm text-gray-500 animate-list-reveal">
         Showing <span className="font-bold text-secondary">{filteredEvents.length}</span> of{' '}
         <span className="font-bold text-secondary">{events.length}</span> past events
       </div>
 
       {filteredEvents.length > 0 ? (
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
-          {filteredEvents.map((event) => (
-            <PastEventCard key={`${event.title}-${event.date}`} event={event} />
+        <div key={`grid-${animationKey}`} className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4">
+          {filteredEvents.map((event, index) => (
+            <div
+              key={`${event.title}-${event.date}`}
+              className="animate-list-reveal"
+              style={{ animationDelay: `${Math.min(index * 55, 420)}ms` }}
+            >
+              <PastEventCard event={event} />
+            </div>
           ))}
         </div>
       ) : (
-        <div className="rounded-[15px] border border-dashed border-gray-300 bg-white p-8 md:p-12 text-center">
+        <div key={`empty-${animationKey}`} className="rounded-[15px] border border-dashed border-gray-300 bg-white p-8 md:p-12 text-center animate-list-reveal">
           <h3 className="text-xl md:text-2xl font-bold text-secondary mb-2">No past events match these filters</h3>
           <p className="text-gray-500 mb-6">Try a different keyword, city, category, or year.</p>
           <button

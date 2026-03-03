@@ -10,13 +10,13 @@ interface CityCardProps {
 
 const CityCard: React.FC<CityCardProps> = ({ city }) => {
   return (
-    <Link href={city.link} className="group block relative overflow-hidden rounded-[15px] aspect-square shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-1 bg-black">
+    <Link href={city.link} className="group interactive-tilt-card block relative overflow-hidden rounded-[15px] aspect-square shadow-sm hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 transform hover:-translate-y-1 bg-black">
       <Image 
         src={city.image} 
         alt={city.name} 
         layout="fill"
         objectFit="cover"
-        className="transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+        className="interactive-tilt-media transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 flex flex-col items-start justify-end">

@@ -13,8 +13,8 @@ interface EventCardProps {
 const EventCard: React.FC<EventCardProps> = ({ event, layout = 'vertical' }) => {
   if (layout === 'horizontal') {
     return (
-      <Link href={event.link} className="group bg-slate-50 rounded-[10px] overflow-hidden border border-gray-100 transition-all-custom flex flex-col md:flex-row items-stretch shadow-sm hover:shadow-md h-full mx-1">
-        <div className="w-full md:w-56 shrink-0 overflow-hidden relative aspect-[16/9] md:aspect-[2/3]">
+      <Link href={event.link} className="group interactive-tilt-card bg-slate-50 rounded-[10px] overflow-hidden border border-gray-100 transition-all-custom flex flex-col md:flex-row items-stretch shadow-sm hover:shadow-md h-full mx-1">
+        <div className="interactive-tilt-media w-full md:w-56 shrink-0 overflow-hidden relative aspect-[16/9] md:aspect-[2/3]">
           <Image 
             src={event.image}
             alt={event.title} 
@@ -58,8 +58,8 @@ const EventCard: React.FC<EventCardProps> = ({ event, layout = 'vertical' }) => 
   }
 
   return (
-    <Link href={event.link} className="group bg-white rounded-[10px] border border-gray-100 p-3 md:p-5 overflow-hidden transition-all-custom flex flex-col items-center hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20">
-      <div className="relative block overflow-hidden aspect-[2/3] w-full rounded-[10px] mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+    <Link href={event.link} className="group interactive-tilt-card bg-white rounded-[10px] border border-gray-100 p-3 md:p-5 overflow-hidden transition-all-custom flex flex-col items-center hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20">
+      <div className="interactive-tilt-media relative block overflow-hidden aspect-[2/3] w-full rounded-[10px] mb-4 shadow-sm group-hover:shadow-md transition-shadow">
         <Image 
           src={event.image} 
           alt={event.title} 

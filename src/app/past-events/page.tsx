@@ -1,6 +1,7 @@
 
 import EventsPageHeader from "../_components/EventsPageHeader";
 import InteractivePastEventsExplorer from "../_components/InteractivePastEventsExplorer";
+import ScrollReveal from "../_components/ScrollReveal";
 import { pastEvents } from "@/lib/data";
 
 export default function PastEventsPage() {
@@ -12,7 +13,9 @@ export default function PastEventsPage() {
       />
       <section className="py-20 bg-slate-50 min-h-screen">
         <div className="container mx-auto px-6 max-w-[1280px]">
-          <InteractivePastEventsExplorer events={pastEvents} />
+          <ScrollReveal direction="up" delay={90}>
+            <InteractivePastEventsExplorer events={pastEvents} />
+          </ScrollReveal>
         </div>
       </section>
     </div>
